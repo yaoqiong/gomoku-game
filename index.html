@@ -11,7 +11,10 @@
         <h1>五子棋</h1>
         <div class="info">
             <span id="current-player">当前玩家: 黑方</span>
-            <button id="reset-btn">重新开始</button>
+            <div class="btn-group">
+                <button id="undo-btn" disabled>悔棋</button>
+                <button id="reset-btn">重新开始</button>
+            </div>
         </div>
         <canvas id="board" width="600" height="600"></canvas>
         <div id="message"></div>

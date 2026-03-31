@@ -8,8 +8,9 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
+    padding: 20px 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
@@ -19,6 +20,8 @@ body {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    /* 响应式：在小屏上自动占满宽度 */
+    width: min(640px, 100vw - 20px);
 }
 
 h1 {
@@ -32,12 +35,41 @@ h1 {
     align-items: center;
     margin-bottom: 20px;
     padding: 0 10px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 #current-player {
     font-size: 18px;
     font-weight: bold;
     color: #555;
+}
+
+/* 按钮组：悔棋 + 重新开始并排 */
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+#undo-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #95a5a6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#undo-btn:hover:not(:disabled) {
+    background: #7f8c8d;
+}
+
+#undo-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 #reset-btn {
@@ -59,6 +91,12 @@ h1 {
     border: 2px solid #333;
     cursor: pointer;
     background: #daa520;
+    /* 响应式：不超过容器宽度 */
+    max-width: 100%;
+    /* 禁止移动端默认触摸行为（滚动、缩放），使触摸落子更顺畅 */
+    touch-action: none;
+    display: block;
+    margin: 0 auto;
 }
 
 #message {
